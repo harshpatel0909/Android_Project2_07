@@ -44,7 +44,13 @@ class MainActivityInstrumentedTest {
     @Test
     fun testChangeText_withAbcdefInput() {
         enterText("abcdef")
-        onView(withId(R.id.changeTextBt)).perform(click())
+        onView(withId(R.id.changeTextBt)).perform(@Test
+    fun testOpenActivity_withEmptyInput() {
+        enterText("")
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("")))
+    }click())
         onView(withId(R.id.textToBeChanged))
             .check(matches(withText("abcdef")))
     }
@@ -56,5 +62,15 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.show_text_view))
             .check(matches(withText("123")))
     }
+
+    @Test
+    fun testOpenActivity_withEmptyInput() {
+        enterText("")
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("")))
+    }
+
+
 
 }
