@@ -20,9 +20,7 @@ class EmailValidatorTest {
         assertFalse(EmailValidator.isValidEmail("123@abc..com"))
     }
 
-//    other cases
-
-@Test fun noUsername() {
+    @Test fun noUsername() {
         assertFalse(EmailValidator.isValidEmail("@abc.com"))
     }
 
