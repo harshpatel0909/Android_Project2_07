@@ -49,27 +49,56 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         jvmTarget = "1.8"
     }
 }
+//
+//dependencies {
+//    // App dependencies
+//    implementation 'androidx.annotation:annotation:' + rootProject.androidxAnnotationVersion
+//    implementation 'com.google.guava:guava:' + rootProject.guavaVersion
+//    implementation 'androidx.test.ext:truth:1.6.0'
+//
+//    // Testing-only dependencies
+//    androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+//    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
+//    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
+//    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+//    androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
+//    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+//
+//    testImplementation 'androidx.test:core:' + rootProject.coreVersion
+//    testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+//    testImplementation 'junit:junit:4.12'
+//    testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
+//    testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+//    testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
+//    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
+//}
+
 
 dependencies {
     // App dependencies
-    implementation 'androidx.annotation:annotation:' + rootProject.androidxAnnotationVersion
-    implementation 'com.google.guava:guava:' + rootProject.guavaVersion
-    implementation 'androidx.test.ext:truth:1.6.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
+    implementation 'com.google.guava:guava:32.1.2-android'
 
-    // Testing-only dependencies
-    androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
-    androidTestImplementation 'androidx.test:core-ktx:' + rootProject.coreVersion
-    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
-    androidTestImplementation 'androidx.test.ext:junit-ktx:' + rootProject.extJUnitVersion
-    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
-    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+    // UI Assertion Library (truth)
+    implementation 'androidx.test.ext:truth:1.5.0'
 
-    testImplementation 'androidx.test:core:' + rootProject.coreVersion
-    testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
-    testImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
-    testImplementation 'androidx.test.espresso:espresso-intents:' + rootProject.espressoVersion
-    testImplementation 'androidx.test.ext:truth:' + rootProject.extTruthVersion
+    // Android Instrumentation Test dependencies
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation 'androidx.test:core-ktx:1.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:truth:1.5.0'
+
+    // Unit testing dependencies
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.9'
+    testImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation 'androidx.test.espresso:espresso-intents:3.5.1'
+    testImplementation 'androidx.test.ext:truth:1.5.0'
 }
