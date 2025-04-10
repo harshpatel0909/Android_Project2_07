@@ -1,39 +1,42 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+}
 
 android {
+    namespace 'com.example.android.testing.espresso.BasicSample'
+
     compileSdkVersion 32
     buildToolsVersion rootProject.buildToolsVersion
+
     defaultConfig {
         applicationId "com.example.android.testing.espresso.BasicSample"
-        minSdkVersion 14
-        targetSdkVersion 32
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     lintOptions {
         abortOnError false
     }
-    productFlavors {
-    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
         }
         managedDevices {
             devices {
-
-                // run with ../gradlew  nexusOneApi30DebugAndroidTest
                 nexusOneApi30(com.android.build.api.dsl.ManagedVirtualDevice) {
-                    // A lower resolution device is used here for better emulator performance
                     device = "Nexus One"
                     apiLevel = 30
-                    // Also use the AOSP ATD image for better emulator performance
                     systemImageSource = "aosp-atd"
                 }
             }
@@ -41,7 +44,7 @@ android {
     }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -49,8 +52,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 dependencies {
     // App dependencies
-    implementation 'androidx.annotation:annotation:' + rootProject.androidxAnnotationVersion;
+    implementation 'androidx.annotation:annotation:' + rootProject.androidxAnnotationVersion
     implementation 'com.google.guava:guava:' + rootProject.guavaVersion
+    implementation 'androidx.test.ext:truth:1.6.0'
 
     // Testing-only dependencies
     androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
@@ -61,7 +65,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
 
-    testImplementation 'androidx.test:core:' + rootProject.coreVersion;
+    testImplementation 'androidx.test:core:' + rootProject.coreVersion
     testImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:' + rootProject.robolectricVersion
