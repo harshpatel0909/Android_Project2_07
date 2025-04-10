@@ -71,6 +71,21 @@ class MainActivityInstrumentedTest {
             .check(matches(withText("")))
     }
 
+    @Test
+    fun testOpenActivity_withNoInput() {
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("")))
+    }
+
+    @Test
+    fun testOpenActivity_withAbcdefInput() {
+        enterText("abcdef")
+        onView(withId(R.id.activityChangeTextBtn)).perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("abcdef")))
+    }
+
 
 
 }
